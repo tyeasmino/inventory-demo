@@ -96,7 +96,7 @@ const ProductCard = ({ product, width = 362, height = 315 }) => {
           </div>
         </div>
       </Link>
-      <div className="hidden">
+      {/* <div className="hidden">
         <Modal
           className={`scale-50 md:scale-65 lg:scale-100 lg-w-[1000px] 2xl:block`}
         >
@@ -113,9 +113,9 @@ const ProductCard = ({ product, width = 362, height = 315 }) => {
               className="w-full aspect-square object-cover rounded-[20px]"
             />
 
-            {/* Details */}
+            
             <div className="z-10 scale-65  2xl:scale-90 border">
-              {/*  offer, stock, share and Title  */}
+              
 
               <div className="flex gap-4 ">
                 <p className="py-2.5 px-[18px] rounded-[32px] bg-[#FE2CBFD4] text-sm font-nexa font-extrabold max-w-fit">
@@ -130,7 +130,7 @@ const ProductCard = ({ product, width = 362, height = 315 }) => {
                 {product_name}
               </h1>
 
-              {/* Price */}
+             
               <div className="mt-4 flex justify-between ">
                 <p className="text-[48px] text-[#FF9923] font-[999]">
                   {selling_price}$
@@ -142,12 +142,12 @@ const ProductCard = ({ product, width = 362, height = 315 }) => {
                 )}
               </div>
 
-              {/* Quantity */}
+              
               <Quantity price={selling_price} product={product} />
             </div>
           </div>
         </Modal>
-      </div>
+      </div> */}
     </>
   );
 };

@@ -175,14 +175,17 @@ export async function userFetchClient(path, options = {}) {
         Authorization: `Bearer ${access}`,
       },
     });
+    console.log(mainRes);
+    console.log(`endpoint: ${path} || status: ${mainRes.status}`);
+    const resData = await mainRes.json();
+    console.log("== res data ==", resData);
 
     if (mainRes.ok) {
-      return { status: "success", data: await mainRes.json() };
+      return { status: "success", data: resData };
     } else {
-      const data = await mainRes.json();
       return {
         status: "error",
-        message: getFetchErrorMessage(data) || "There was an error!",
+        message: getFetchErrorMessage(resData) || "There was an error!",
       };
     }
   } catch (error) {

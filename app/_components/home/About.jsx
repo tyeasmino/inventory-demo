@@ -1,6 +1,6 @@
 import React from "react";
 import { LightOne, LightPink } from "../common/svg";
-import img from "@/public/images/about.svg";
+import img from "@/public/images/about.webp";
 import Image from "next/image";
 import Link from "next/link";
 const About = () => {

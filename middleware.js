@@ -6,6 +6,9 @@ export async function middleware(request) {
   const guestToken = request.cookies.get("guest-info")?.value;
   const path = request.nextUrl.pathname;
   const response = NextResponse.next();
+  if (path.startsWith("/password-reset-confirm")) {
+    return NextResponse.next();
+  }
 
   if (!guestToken && path !== "/guest-auth") {
     return NextResponse.redirect(new URL("/guest-auth", request.url));
