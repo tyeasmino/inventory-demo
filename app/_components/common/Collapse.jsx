@@ -78,17 +78,17 @@ export function Collapse({
 }) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const contentRef = useRef(null);
-  const [maxHeight, setMaxHeight] = useState("0px");
+  // const [maxHeight, setMaxHeight] = useState("0px");
 
-  useEffect(() => {
-    if (contentRef.current) {
-      if (isOpen) {
-        setMaxHeight(`${contentRef.current.scrollHeight}px`);
-      } else {
-        setMaxHeight("0px");
-      }
-    }
-  }, [isOpen]);
+  // useEffect(() => {
+  //   if (contentRef.current) {
+  //     if (isOpen) {
+  //       setMaxHeight(`${contentRef.current.scrollHeight}px`);
+  //     } else {
+  //       setMaxHeight("0px");
+  //     }
+  //   }
+  // }, [isOpen]);
 
   return (
     <details
@@ -132,8 +132,8 @@ export function Collapse({
 
       <div
         ref={contentRef}
-        style={{ maxHeight }}
-        className={`transition-all duration-300 ease-in-out overflow-hidden px-4 ${
+        // style={{ maxHeight }}
+        className={`transition-all duration-300 ease-in-out  px-4 ${
           isOpen ? "opacity-100" : "opacity-0"
         }`}
       >

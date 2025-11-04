@@ -17,7 +17,7 @@ export const CartProvider = ({ children }) => {
       toast.info("Product already in cart, change quantity from cart");
       return;
     }
-    if (product.current_stock === 0) {
+    if (product.current_stock <= 0) {
       toast.error("Product is out of stock");
       return;
     } else {
@@ -29,8 +29,13 @@ export const CartProvider = ({ children }) => {
   const onIncrement = (id) => {
     const newCarts = carts.map((product) => {
       if (product.id === id) {
-        if (Number(product.current_stock) === product.qty) {
+        if (Number(product.current_stock) === Number(product.qty)) {
           toast.error("Product is out of stock");
+          return product;
+        } else if (Number(product.current_stock) <= Number(product.qty)) {
+          toast.error(
+            `Please enter a value within the available stock — only ${product.current_stock} left..`
+          );
           return product;
         } else {
           return {
@@ -48,8 +53,13 @@ export const CartProvider = ({ children }) => {
   const onBulkChangeQty = (id, value) => {
     const newCarts = carts.map((product) => {
       if (product.id === id) {
-        if (Number(product.current_stock) === product.qty) {
+        if (Number(product.current_stock) === value) {
           toast.error("Product is out of stock");
+          return product;
+        } else if (Number(product.current_stock) < value) {
+          toast.error(
+            `Please enter a value within the available stock — only ${product.current_stock} left..`
+          );
           return product;
         } else {
           if (value < 1) {
@@ -74,8 +84,11 @@ export const CartProvider = ({ children }) => {
   const onDecrement = (id) => {
     const newCarts = carts.map((product) => {
       if (product.id === id) {
-        if (product.qty === 1) {
-          return product;
+        if (product.qty <= 1) {
+          return {
+            ...product,
+            qty: 1,
+          };
         } else {
           return {
             ...product,
